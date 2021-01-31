@@ -10,14 +10,15 @@ import (
 )
 
 func main() {
-	db := sqlConnect()
-	defer db.Close()
+	// db := sqlConnect()
+	// defer db.Close()
 
 	router := gin.Default()
-	router.LoadHTMLGlob("templates/*.html")
 
 	router.GET("/", func(ctx *gin.Context) {
-		ctx.HTML(200, "index.html", gin.H{})
+		ctx.JSON(200, gin.H{
+			"message": "hello!!",
+		})
 	})
 
 	router.Run()
